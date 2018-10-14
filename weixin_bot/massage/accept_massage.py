@@ -38,6 +38,12 @@ class AcceptMassage():
         self.text = text
         self.is_group = is_group
         self.member = member
+        if self.is_group:
+            self.user_id = self.member
+            self.group_id = self.from_wxid
+        else:
+            self.user_id = self.from_wxid
+            self.group_id = ""
 
     def get_msg_type(self):
         if self.msg_type == "connect_success":
