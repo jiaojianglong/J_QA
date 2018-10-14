@@ -5,4 +5,4 @@
 
 
 
-clients = [dict(host="119.27.190.230",send_port=8899,accept_port=8898,name="腾讯云")]
+clients = [dict(host="114.115.175.100",send_port=8899,accept_port=8898,name="华为云")]
