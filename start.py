@@ -8,6 +8,8 @@ import tornado.ioloop
 import tornado.web
 from urls import handler
 import tornado.httpserver
+import weixin_bot.massage_handle
+from weixin_bot.connect_bot.connect import CONNS
 
 application = tornado.web.Application(handler,debug = False)
 

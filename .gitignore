@@ -1,1 +1,7 @@
 /handlers/__pycache__/
+/__pycache__/
+/tools/__pycache__/
+/weixin_bot/__pycache__/
+/weixin_bot/connect_bot/__pycache__/
+/weixin_bot/massage/__pycache__/
+/weixin_bot/massage_handle/__pycache__/
