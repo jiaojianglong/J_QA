@@ -14,6 +14,10 @@ class TextMassage(Msg):
     type_ = "text"
 
     def handle(self):
+
+
+
+
         body = {
             "reqType":0,
             "perception": {

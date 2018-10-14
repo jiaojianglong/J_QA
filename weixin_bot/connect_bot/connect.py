@@ -12,11 +12,24 @@ CONNS = [TCPClient(clinet).connect() for clinet in clients]
 
 def send_thread():
     while True:
-        for client in CONNS:
-            if not client.sendmassage.sending:
-                client.sendmassage.send()
-                client.sendmassage.sending = True
-        time.sleep(1)
+        for i in range(60):
+            for client in CONNS:
+                if not client.sendmassage.sending:
+                    client.sendmassage.send()
+                    client.sendmassage.sending = True
+            time.sleep(1)
+            if i == 20:
+                for client in CONNS:
+                    try:
+                        print("心跳")
+                        client.sendmassage.sendmsg("lalala")
+                        client.re_connect_num = 0
+                    except:
+                        if client.re_connect_num == 0:
+                            client.reconnect()
+
+
+
 
 threading.Thread(target=send_thread).start()
 
