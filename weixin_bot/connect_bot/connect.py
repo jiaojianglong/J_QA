@@ -22,7 +22,7 @@ def send_thread():
                 for client in CONNS:
                     try:
                         print("心跳")
-                        client.sendmassage.sendmsg("lalala")
+                        client.stream.write(b"lalala")
                         client.re_connect_num = 0
                     except:
                         if client.re_connect_num == 0:
