@@ -60,6 +60,10 @@ class AcceptMassage():
             return "vedio"
         elif self.msg_type == "34":  # 语音
             return "voice"
+        elif self.msg_type == "42":  #名片
+            return "wecard"
+        elif self.msg_type == "48":  #位置信息
+            return "location"
         elif self.msg_type == "49":  # 连接
             return "link"
         elif self.msg_type == "10000":  # 通知消息

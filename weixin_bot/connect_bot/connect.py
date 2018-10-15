@@ -21,7 +21,6 @@ def send_thread():
             if i == 20:
                 for client in CONNS:
                     try:
-                        print("心跳")
                         client.stream.write(b"lalala")
                         client.re_connect_num = 0
                     except:
