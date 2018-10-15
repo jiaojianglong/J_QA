@@ -4,7 +4,7 @@
 # @Author  : jiaojianglong
 
 
-from weixin_bot.massage.msg import Msg
+from weixin_bot.client.msg import Msg
 
 class AcceptMassage():
 

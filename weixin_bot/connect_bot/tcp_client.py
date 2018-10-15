@@ -4,8 +4,6 @@
 # @Author  : JiaoJianglong
 
 
-import os
-import re
 import time
 import datetime
 import socket
@@ -15,18 +13,17 @@ import tornado.ioloop
 import tornado.iostream
 
 from tools.trans_byte_to_string import transformCodec
-from weixin_bot.massage.accept_massage import AcceptMassage
-from weixin_bot.massage.send_massage import SendMessage
-
+from weixin_bot.connect_bot.accept_massage import AcceptMassage
+from weixin_bot.connect_bot.send_massage import SendMessage
+from weixin_bot.client.wxclient import WXClient
 #TCP连接客户端实例
 #需每隔100秒发送一条消息，避免连接断开
 class TCPClient(object):
 
     def __init__(self, client, io_loop=None):
-        self.client = client
-        self.host = self.client['host']
-        self.accept_port = self.client['accept_port']
-        self.send_port = self.client['send_port']
+        self.host = client['host']
+        self.accept_port = client['accept_port']
+        self.send_port = client['send_port']
         if io_loop is None:
             self.io_loop = tornado.ioloop.IOLoop.current()
         else:
@@ -37,6 +34,7 @@ class TCPClient(object):
         self.EOF = b"\xcd\xea\xb3\xc9"
         self.re_connect_num = 0
         self.sendmassage = SendMessage(self.host,self.send_port)
+        self.client = WXClient(self.host,self.send_port,self.accept_port,self.sendmassage)
     def get_stream(self):
         self.sock_fd = socket.socket(socket.AF_INET, socket.SOCK_STREAM, 0)
         self.stream = tornado.iostream.IOStream(self.sock_fd)

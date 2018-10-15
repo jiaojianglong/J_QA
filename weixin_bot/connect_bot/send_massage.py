@@ -4,14 +4,15 @@
 # @Author  : jiaojianglong
 
 
-from tools.trans_byte_to_string import transformCodec, transtoCode
-from tornado import gen, queues
+
+
 import time
+import datetime
 import tornado.ioloop
 import tornado.iostream
+from tornado import gen, queues
 from tornado.tcpclient import TCPClient
-import datetime
-
+from tools.trans_byte_to_string import transformCodec, transtoCode
 
 class SendMessage():
     def __init__(self, host, port, io_loop=None):

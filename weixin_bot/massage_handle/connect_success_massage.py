@@ -1,12 +1,13 @@
 #!/usr/bin/python3
 # -*- coding: utf-8 -*-
-# @Time    : 2018/10/14 0014 20:17
+# @Time    : 2018/10/15 0015 20:56
 # @Author  : jiaojianglong
+
 from weixin_bot.client.msg import Msg
 
 
-class VedioMassage(Msg):
-    type_ = "vedio"
+class ConnectSuccessMassage(Msg):
+    type_ = "connect_success"
 
     def handle(self):
-        print("视屏消息")
+        print("连接成功")
