@@ -9,3 +9,4 @@
 /weixin_bot/client/__pycache__/
 /models/__pycache__/
 /models/connect/__pycache__/
+/models/mysql/__pycache__/

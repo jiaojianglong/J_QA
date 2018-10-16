@@ -7,8 +7,10 @@ from sqlalchemy import create_engine
 from setting import MYSQL_INFO
 from models.connect.basemodel import BaseModel
 
+
 engine = create_engine(MYSQL_INFO)
 DBSession = sessionmaker(bind=engine)
+
 
 class MySQL(BaseModel):
 
@@ -113,7 +115,6 @@ class MySQL(BaseModel):
         :return:
         """
         raise NotImplementedError()
-
 
 
 

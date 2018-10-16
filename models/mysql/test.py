@@ -21,7 +21,7 @@ class User(Base,MySQL):
 
 
 
-#Base.metadata.create_all(engine)
 
-#User.create(id=3,name="jiao")
-User.update_by_id(id=3,name="hahaha")
+
+# User.create(id=3,name="jiao")
+User.update_by_id(3,dict(name="lalalalla"))
