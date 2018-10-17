@@ -62,6 +62,8 @@ def tuling_replay(kwargs,msg):
         elif result['resultType'] == "video":
             print("图灵返回视频")
         elif result['resultType'] == "image":
-            print("图灵返回图片")
+            image_url = result["values"]['image']
+            image_name = image_url.split("com/")[1]
+            msg.sendImage(image_name,image_url)
         elif result['resultType'] == "news":
             print("图灵返回图文消息")
