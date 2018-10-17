@@ -86,3 +86,7 @@ class MongoDB(BaseModel):
         if not obj:
             raise Exception("不存在:%s！" % query_params)
         return obj
+
+    def get_count(self, query_params):
+        print(self.coll.count(query_params))
+        return self.coll.count(query_params)

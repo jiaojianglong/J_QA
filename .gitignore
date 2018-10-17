@@ -10,3 +10,4 @@
 /models/__pycache__/
 /models/connect/__pycache__/
 /models/mysql/__pycache__/
+/models/mongodb/__pycache__/
