@@ -159,17 +159,10 @@ class GaoXiaoGifCOM():
         ls_f = base64.b64encode(f.read())
         f.close()
         common_body = {"image": ls_f, "probability": "true"}
-        try:
-            res = requests.post(accurate_url, data=common_body).text
-            res = json.loads(res)
-            print(res)
-            words_result = res["words_result"]
-        except:
-            time.sleep(2)
-            res = requests.post(accurate_url, data=common_body).text
-            res = json.loads(res)
-            print(res)
-            words_result = res["words_result"]
+        res = requests.post(general_url, data=common_body).text
+        res = json.loads(res)
+        print(res)
+        words_result = res["words_result"]
         words = ""
         for word_result in words_result:
             print(word_result)
@@ -181,7 +174,9 @@ class GaoXiaoGifCOM():
 
     def update_content(self):
         emoticons = EmoticonModel().coll.find()
+        num = 0
         for emoticon in emoticons:
+            num+=1
             file_name = emoticon['file_name']
             id = emoticon['id']
             words = self.get_text_from_picture(file_name)
@@ -191,6 +186,7 @@ class GaoXiaoGifCOM():
                     self.emoticon_model.update(dict(content=words),query_params={"id":id})
                 except:
                     print("更新报错")
+            print(num)
 if __name__ == "__main__":
     GaoXiaoGifCOM().update_content()
     pass
