@@ -13,6 +13,11 @@ class EmoticonMassage(Msg):
         #TODO 表情需要自己处理，建立库，搜集新的表情，人工绑定回答的表情，可斗图
         re_cdnurl = re.search(r'cdnurl(| )=(| )"(?P<cdnurl>.*?)"',self.text)
         emoticon_url = re_cdnurl.group("cdnurl")
+        self.sendImage("emoticon.gif",emoticon_url)
+        re_cdnurl = re.search(r'thumburl(| )=(| )"(?P<thumburl>.*?)"',self.text)
+        emoticon_thumburl = re_cdnurl.group("thumburl")
+        self.sendImage("emoticon.gif", emoticon_thumburl)
+
         tuling_replay(dict(msg_type=1,
                            imageUrl=emoticon_url,
                            user_id=self.msg.user_id,

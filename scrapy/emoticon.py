@@ -159,17 +159,10 @@ class GaoXiaoGifCOM():
         ls_f = base64.b64encode(f.read())
         f.close()
         common_body = {"image": ls_f, "probability": "true"}
-        try:
-            res = requests.post(accurate_url, data=common_body).text
-            res = json.loads(res)
-            print(res)
-            words_result = res["words_result"]
-        except:
-            time.sleep(2)
-            res = requests.post(accurate_url, data=common_body).text
-            res = json.loads(res)
-            print(res)
-            words_result = res["words_result"]
+        res = requests.post(general_url, data=common_body).text
+        res = json.loads(res)
+        print(res)
+        words_result = res["words_result"]
         words = ""
         for word_result in words_result:
             print(word_result)
