@@ -18,9 +18,6 @@ class MySQL(BaseModel):
         self.__db__ = __db__
         self.session = DBSession()
 
-
-
-
     def create(self,*args,**kwargs):
         """
         在数据库插入一条新数据

@@ -13,4 +13,5 @@
 /models/mongodb/__pycache__/
 /static/
 /.idea/
+/cache/__pycache__/
 
