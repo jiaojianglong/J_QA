@@ -14,22 +14,25 @@ DBSession = sessionmaker(bind=engine)
 
 class MySQL(BaseModel):
 
+    def __init__(self,__db__):
+        self.__db__ = __db__
+        self.session = DBSession()
 
-    @classmethod
-    def create(cls,*args,**kwargs):
+
+
+
+    def create(self,*args,**kwargs):
         """
-        在数据库中插入一条记录
-        :param vals: 待新建记录的字段值，字典类型
-        :return:新建记录的id
+        在数据库插入一条新数据
+        :param args:
+        :param kwargs:
+        :return: 新插入数据的id
         """
-        try:
-            session = DBSession()
-            new_user = cls(*args,**kwargs)
-            session.add(new_user)
-            session.commit()
-            session.close()
-        except Exception as e:
-            print("程序报错",e.args)
+        new_user = self.__db__(*args,**kwargs)
+        self.session.add(new_user)
+        self.session.commit()
+        self.session.close()
+        return new_user
 
     @classmethod
     def update_by_id(cls, id, date):

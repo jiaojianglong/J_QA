@@ -120,6 +120,7 @@ class GaoXiaoGifCOM():
                 ff.write("%s  %s  %s\n\n"%(url['fu_name'],url['zi_name'],url["url"]))
         return urls_dict
 
+    #下载表情,分类储存
     def get_all_emoticons(self):
         with open("../static/emoticon/tag_url_duplication.txt","r",encoding="utf8") as f:
             url_dicts = f.read().split("\n\n")
@@ -127,7 +128,11 @@ class GaoXiaoGifCOM():
                 tag_name = url_dict.split("  ")[1]
                 url = url_dict.split("  ")[2]
                 self.get_emoticon(tag_name,url)
+
     def get_emoticon(self,tag,url):
+        tag_path = self.save_path + "/"+tag+"/"
+        if not os.path.exists(tag_path):
+            os.makedirs(tag_path)
         res = requests.get(url).text
         re_urls = re.findall(r"<span><img src=\"(?P<url>.*?)\"",res)
         for image_url in re_urls:
@@ -138,12 +143,12 @@ class GaoXiaoGifCOM():
                 print(response.content)
                 image = Image.open(BytesIO(response.content))
                 try:
-                    image.save(self.save_path+file_name)
+                    image.save(tag_path+file_name)
                 except OSError:
                     file_name = file_name.split(".")[0]+".gif"
-                    image.save(self.save_path + file_name)
+                    image.save(tag_path + file_name)
 
-                EmoticonModel().create(dict(url=image_url,tags=[tag],file_name=file_name))
+                #EmoticonModel().create(dict(url=image_url,tags=[tag],file_name=file_name))
 
             except:
                 print("*"*200)
@@ -188,7 +193,7 @@ class GaoXiaoGifCOM():
                     print("更新报错")
             print(num)
 if __name__ == "__main__":
-    GaoXiaoGifCOM().update_content()
+    GaoXiaoGifCOM().get_all_emoticons()
     pass
 
     # picture_list = get_text_from_picture()

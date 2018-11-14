@@ -10,7 +10,7 @@ from setting import clients
 emoticons = EmoticonCache().emoticons
 emoticon_name = EmoticonCache().emoticons_name
 send_client = SendMessage(clients[0]['host'],clients[0]['send_port'])
-bot_id = "2936"
+bot_id = "2708"
 user_id = "wxid_lkjy3t6spc4u22"
 def filter_emoticon():
     for emoticon in emoticons:

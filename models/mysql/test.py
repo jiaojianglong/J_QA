@@ -19,6 +19,13 @@ class User(Base,MySQL):
     id = Column(String(20), primary_key=True)
     name = Column(String(20))
 
+class UserModel(MySQL):
+
+    __db__ = User
+
+    def __init__(self):
+        super(UserModel,self).__init__(self.__db__)
+
 
 
 
